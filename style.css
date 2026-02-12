@@ -1,0 +1,277 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Segoe UI', sans-serif;
+}
+
+body {
+    background-color: #f8f9fa;
+    color: #333;
+    line-height: 1.6;
+}
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+/* Основное меню */
+.main-menu {
+    background-color: #2c3e50;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    position: relative;
+    z-index: 1000;
+}
+
+.menu-list {
+    display: flex;
+    list-style: none;
+}
+
+.menu-item {
+    position: relative;
+}
+
+.menu-link {
+    display: block;
+    padding: 18px 24px;
+    color: #ecf0f1;
+    text-decoration: none;
+    font-weight: 500;
+    font-size: 16px;
+    transition: all 0.3s ease;
+    border-right: 1px solid #34495e;
+}
+
+.menu-link:hover,
+.menu-item:hover > .menu-link {
+    background-color: #1a252f;
+}
+
+/* Подменю первого уровня */
+.submenu {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    background-color: #34495e;
+    min-width: 220px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+    opacity: 0;
+    visibility: hidden;
+    transform: translateY(10px);
+    transition: all 0.3s ease;
+    list-style: none;
+    z-index: 1001;
+}
+
+.menu-item:hover > .submenu {
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(0);
+}
+
+.submenu-item {
+    position: relative;
+    border-bottom: 1px solid #3d566e;
+}
+
+.submenu-link {
+    display: block;
+    padding: 14px 20px;
+    color: #ecf0f1;
+    text-decoration: none;
+    transition: all 0.2s ease;
+    font-size: 15px;
+}
+
+.submenu-link:hover,
+.submenu-item:hover > .submenu-link {
+    background-color: #2c3e50;
+    padding-left: 25px;
+}
+
+/* Подменю второго уровня */
+.submenu-lvl2 {
+    position: absolute;
+    top: 0;
+    left: 100%;
+    background-color: #3d566e;
+    min-width: 220px;
+    box-shadow: 5px 5px 15px rgba(0, 0, 0, 0.2);
+    opacity: 0;
+    visibility: hidden;
+    transform: translateX(-10px);
+    transition: all 0.3s ease;
+    list-style: none;
+}
+
+.submenu-item:hover > .submenu-lvl2 {
+    opacity: 1;
+    visibility: visible;
+    transform: translateX(0);
+}
+
+.submenu-lvl2-item {
+    position: relative;
+    border-bottom: 1px solid #4a6a8a;
+}
+
+.submenu-lvl2-link {
+    display: block;
+    padding: 14px 20px;
+    color: #ecf0f1;
+    text-decoration: none;
+    transition: all 0.2s ease;
+    font-size: 15px;
+}
+
+.submenu-lvl2-link:hover,
+.submenu-lvl2-item:hover > .submenu-lvl2-link {
+    background-color: #34495e;
+    padding-left: 25px;
+}
+
+/* Подменю третьего уровня */
+.submenu-lvl3 {
+    position: absolute;
+    top: 0;
+    left: 100%;
+    background-color: #4a6a8a;
+    min-width: 220px;
+    box-shadow: 5px 5px 15px rgba(0, 0, 0, 0.2);
+    opacity: 0;
+    visibility: hidden;
+    transform: translateX(-10px);
+    transition: all 0.3s ease;
+    list-style: none;
+}
+
+.submenu-lvl2-item:hover > .submenu-lvl3 {
+    opacity: 1;
+    visibility: visible;
+    transform: translateX(0);
+}
+
+.submenu-lvl3-item {
+    position: relative;
+    border-bottom: 1px solid #5a7a9a;
+}
+
+.submenu-lvl3-link {
+    display: block;
+    padding: 14px 20px;
+    color: #ecf0f1;
+    text-decoration: none;
+    transition: all 0.2s ease;
+    font-size: 15px;
+}
+
+.submenu-lvl3-link:hover,
+.submenu-lvl3-item:hover > .submenu-lvl3-link {
+    background-color: #3d566e;
+    padding-left: 25px;
+}
+
+/* Стрелочки для пунктов с подменю */
+.menu-item.has-submenu > .menu-link::after {
+    content: '▼';
+    font-size: 10px;
+    margin-left: 8px;
+    display: inline-block;
+    transition: transform 0.3s ease;
+}
+
+.submenu-item.has-submenu > .submenu-link::after {
+    content: '▶';
+    font-size: 10px;
+    float: right;
+    transition: transform 0.3s ease;
+}
+
+.submenu-lvl2-item.has-submenu > .submenu-lvl2-link::after {
+    content: '▶';
+    font-size: 10px;
+    float: right;
+    transition: transform 0.3s ease;
+}
+
+/* Активный пункт меню при открытом подменю */
+.menu-item:hover > .menu-link,
+.menu-item:focus-within > .menu-link {
+    background-color: #1a252f;
+}
+
+.submenu-item:hover > .submenu-link,
+.submenu-item:focus-within > .submenu-link {
+    background-color: #2c3e50;
+}
+
+.submenu-lvl2-item:hover > .submenu-lvl2-link,
+.submenu-lvl2-item:focus-within > .submenu-lvl2-link {
+    background-color: #34495e;
+}
+
+.submenu-lvl3-item:hover > .submenu-lvl3-link,
+.submenu-lvl3-item:focus-within > .submenu-lvl3-link {
+    background-color: #3d566e;
+}
+
+/* Контент под меню */
+.content {
+    margin-top: 30px;
+    padding: 30px;
+    background-color: white;
+    border-radius: 8px;
+    box-shadow: 0 2px 15px rgba(0, 0, 0, 0.05);
+}
+
+h1 {
+    color: #2c3e50;
+    margin-bottom: 20px;
+    padding-bottom: 15px;
+    border-bottom: 2px solid #3498db;
+}
+
+h2 {
+    color: #34495e;
+    margin: 25px 0 15px;
+}
+
+p {
+    margin-bottom: 15px;
+    color: #555;
+}
+
+/* Адаптивность */
+@media (max-width: 768px) {
+    .menu-list {
+        flex-direction: column;
+    }
+    
+    .menu-link {
+        border-right: none;
+        border-bottom: 1px solid #34495e;
+    }
+    
+    .submenu, .submenu-lvl2, .submenu-lvl3 {
+        position: static;
+        box-shadow: none;
+        opacity: 1;
+        visibility: visible;
+        transform: none;
+        display: none;
+        background-color: #3d566e;
+    }
+    
+    .menu-item:hover > .submenu,
+    .submenu-item:hover > .submenu-lvl2,
+    .submenu-lvl2-item:hover > .submenu-lvl3 {
+        display: block;
+    }
+    
+    .submenu-lvl2, .submenu-lvl3 {
+        margin-left: 20px;
+    }
+}
